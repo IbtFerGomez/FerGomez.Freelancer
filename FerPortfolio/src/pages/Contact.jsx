@@ -1,16 +1,18 @@
 import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useMutation } from '@tanstack/react-query';
 import emailjs from '@emailjs/browser';
+import { Send, ShieldCheck, Mail, MapPin } from 'lucide-react';
 
 const Contact = () => {
   const formRef = useRef();
 
   const mutation = useMutation({
     mutationFn: async (formElement) => {
-      // Reemplaza estos 3 strings con tus IDs de EmailJS
-      const SERVICE_ID = 'TU_SERVICE_ID';
-      const TEMPLATE_ID = 'TU_TEMPLATE_ID';
-      const PUBLIC_KEY = 'TU_PUBLIC_KEY';
+      // Credenciales proporcionadas
+      const SERVICE_ID = 'Ibt.Fernandogomez';
+      const TEMPLATE_ID = 'ContactPorfolio';
+      const PUBLIC_KEY = 'BD9JSsjNwMtxaR616';
 
       return emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formElement, PUBLIC_KEY);
     },
@@ -22,68 +24,151 @@ const Contact = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12">
-      <div className="text-center mb-12 uppercase tracking-tighter">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Initialize Collaboration</h1>
-        <p className="text-slate-500 font-mono">Secure Transmission Protocol / Life Sciences & IT</p>
-      </div>
-
-      <form 
-        ref={formRef}
-        onSubmit={handleSubmit} 
-        className="space-y-6 bg-soft-glass p-8 md:p-12 rounded-[40px] border border-white/5 relative overflow-hidden"
+    <div className="max-w-6xl mx-auto px-8 py-20">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-20"
       >
-        {/* Decoración sutil de fondo para el formulario */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-logic-blue/5 blur-[80px]" />
-        
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-slate-500 ml-1 font-bold">Sender Name</label>
-            <input name="name" required className="w-full bg-space-black border border-white/10 p-4 rounded-2xl focus:border-logic-blue outline-none transition-all text-white" placeholder="Dr. Jane Smith" />
-          </div>
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-slate-500 ml-1 font-bold">Digital Address</label>
-            <input name="email" type="email" required className="w-full bg-space-black border border-white/10 p-4 rounded-2xl focus:border-logic-blue outline-none transition-all text-white" placeholder="jane@biotech.co" />
-          </div>
-        </div>
+        <h2 className="text-electric font-mono text-xs tracking-[0.4em] uppercase mb-6 font-bold">Secure Communication</h2>
+        <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">
+          Let's Build <span className="text-slate-600">Together.</span>
+        </h1>
+        <p className="text-slate-400 max-w-2xl mx-auto text-xl">
+          Connect with the <span className="text-white font-semibold">Logical Architect</span> to discuss LIMS, Backend systems, or Biotech R&D.
+        </p>
+      </motion.div>
 
-        <div className="space-y-2">
-          <label className="text-[10px] uppercase tracking-widest text-slate-500 ml-1 font-bold">Domain of Interest</label>
-          <select name="type" className="w-full bg-space-black border border-white/10 p-4 rounded-2xl focus:border-logic-blue outline-none transition-all text-slate-300">
-            <option value="LIMS">LIMS & Automation Architecture</option>
-            <option value="Backend">Enterprise Backend (Java/Spring)</option>
-            <option value="Biotech">Scientific Data Consulting</option>
-            <option value="Staff">Staff Augmentation</option>
-          </select>
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-[10px] uppercase tracking-widest text-slate-500 ml-1 font-bold">Project Abstract</label>
-          <textarea name="message" required className="w-full bg-space-black border border-white/10 p-4 rounded-2xl focus:border-logic-blue outline-none transition-all h-40 resize-none text-white" placeholder="Outline your technical or scientific requirements..."></textarea>
-        </div>
-
-        <button 
-          type="submit"
-          disabled={mutation.isPending}
-          className="w-full py-4 bg-white text-black font-bold rounded-2xl hover:bg-logic-blue hover:text-white transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+      <div className="grid lg:grid-cols-3 gap-12 items-start">
+        {/* Info Sidebar */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          className="space-y-8"
         >
-          {mutation.isPending ? 'ENCRYPTING & SENDING...' : 'DISPATCH MESSAGE'}
-        </button>
-
-        {mutation.isSuccess && (
-          <div className="bg-bio-green/10 border border-bio-green/20 p-4 rounded-2xl">
-             <p className="text-bio-green text-center text-sm font-bold tracking-tight">
-               ✓ PROTOCOL SUCCESS: Message delivered to the Logical Architect.
-             </p>
+          <div className="flex items-center gap-4 group">
+            <div className="w-12 h-12 rounded-2xl bg-glass border border-white/5 flex items-center justify-center group-hover:border-electric/50 transition-colors">
+              <Mail className="text-electric" size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Email</p>
+              <p className="text-sm text-slate-200">fegomu.ibt@gmail.com</p>
+            </div>
           </div>
-        )}
+          <div className="flex items-center gap-4 group">
+            <div className="w-12 h-12 rounded-2xl bg-glass border border-white/5 flex items-center justify-center group-hover:border-emerald/50 transition-colors">
+              <ShieldCheck className="text-emerald" size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Compliance</p>
+              <p className="text-sm text-slate-200">FDA 21 CFR Part 11 Ready</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 group">
+            <div className="w-12 h-12 rounded-2xl bg-glass border border-white/5 flex items-center justify-center group-hover:border-white/20 transition-colors">
+              <MapPin className="text-white" size={20} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Location</p>
+              <p className="text-sm text-slate-200">Remote / Global</p>
+            </div>
+          </div>
+        </motion.div>
 
-        {mutation.isError && (
-          <p className="text-red-500 text-center text-sm font-bold">
-            ⚠ UPLINK ERROR: Please check your connection or try again.
-          </p>
-        )}
-      </form>
+        {/* Form */}
+        <motion.form 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3 }}
+          ref={formRef}
+          onSubmit={handleSubmit} 
+          className="lg:col-span-2 space-y-6 bg-glass p-10 rounded-[40px] border border-white/5 backdrop-blur-sm"
+        >
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 ml-1 font-bold">Name</label>
+              <input 
+                name="name" 
+                required 
+                className="w-full bg-ink-black border border-white/10 p-4 rounded-2xl focus:border-electric outline-none transition-all text-white placeholder:text-slate-600" 
+                placeholder="Full Name / Company" 
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 ml-1 font-bold">Email</label>
+              <input 
+                name="email" 
+                type="email" 
+                required 
+                className="w-full bg-ink-black border border-white/10 p-4 rounded-2xl focus:border-electric outline-none transition-all text-white placeholder:text-slate-600" 
+                placeholder="email@address.com" 
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 ml-1 font-bold">Project Category</label>
+            <select 
+              name="type" 
+              className="w-full bg-ink-black border border-white/10 p-4 rounded-2xl focus:border-electric outline-none transition-all text-slate-300"
+            >
+              <option value="LIMS">LIMS & Lab Automation</option>
+              <option value="Backend">Backend Architecture (Java/Spring)</option>
+              <option value="Biotech">Biotech Consulting</option>
+              <option value="FullStack">Full-Stack Development</option>
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 ml-1 font-bold">Message</label>
+            <textarea 
+              name="message" 
+              required 
+              className="w-full bg-ink-black border border-white/10 p-4 rounded-2xl focus:border-electric outline-none transition-all h-40 resize-none text-white placeholder:text-slate-600" 
+              placeholder="Describe your project or challenge..."
+            />
+          </div>
+
+          <button 
+            type="submit"
+            disabled={mutation.isPending}
+            className="w-full py-5 bg-white hover:bg-electric text-black hover:text-white font-bold rounded-2xl transition-all disabled:opacity-50 flex items-center justify-center gap-3"
+          >
+            {mutation.isPending ? (
+              <span className="animate-pulse">Sending...</span>
+            ) : (
+              <>
+                <Send size={18} /> Send Message
+              </>
+            )}
+          </button>
+
+          {mutation.isSuccess && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-emerald/10 border border-emerald/20 p-4 rounded-2xl"
+            >
+               <p className="text-emerald text-center text-sm font-bold">
+                 ✓ Message sent successfully! I'll get back to you soon.
+               </p>
+            </motion.div>
+          )}
+
+          {mutation.isError && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl"
+            >
+              <p className="text-red-500 text-center text-sm font-bold">
+                ⚠ Error sending message. Please try again or email directly.
+              </p>
+            </motion.div>
+          )}
+        </motion.form>
+      </div>
     </div>
   );
 };
