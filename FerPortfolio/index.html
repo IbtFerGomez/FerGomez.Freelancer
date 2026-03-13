@@ -1,29 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=// components/Layout/Navbar.jsx
-import { Link } from 'react-router-dom';
-
-const Navbar = () => (
-  <nav className="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-    <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <Link to="/" className="font-bold text-xl tracking-tighter text-white">
-        FERNANDO<span className="text-emerald-500">GÓMEZ</span>
-      </Link>
-      <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-        {['Science', 'Software', 'Hybrid', 'Projects', 'Pricing', 'Contact'].map((item) => (
-          <Link key={item} to={`/${item.toLowerCase()}`} className="hover:text-emerald-400 transition-colors">
-            {item}
-          </Link>
-        ))}
-      </div>
-    </div>
-  </nav>
-);, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ferportfolio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
